@@ -1,0 +1,64 @@
+body {  
+  background-color: black;
+  color: whitesmoke;
+}
+.logo {
+  height: 60px;
+  width: 60px;
+  display: flex;
+  box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
+}
+.image1 {
+  height: 400px;
+  width: 800px;
+  display: flex;
+  box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  ;
+}
+.container {
+  margin-left: 70px;
+ 
+
+}
+.containerroom::after {
+  content: none;
+  display:table;
+  clear:both;
+  margin-left: 60px;
+  display: flex;
+  flex-direction: column;
+ 
+
+}
+.container1 {
+  float:left;
+  flex-direction: column;
+  display: flex; 
+  margin-left: 50px;
+  align-items: center;
+  border: 2px solid goldenrod;
+  margin-bottom: 20px;
+  border-radius: 10px ;
+  box-shadow: 0px 2.98256px 7.4564px rgba(243, 240, 2440, 2.9);
+  position: relative;
+}
+.container1 > img {
+  width: 300px;
+  height: 300px;  
+}
+.badge {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  background-color: goldenrod;
+  padding: 5px 7px;
+  border-radius: 2px white;
+  font-weight: bold;
+
+}
+
+
+
