@@ -1,7 +1,6 @@
 import './App.css';
 import Cards from './Component/Cards';
 import Hero from './Component/Hero';
-import Navbar from './Component/Navbar';
 import data from './Component/Data';
 
 function App() {
@@ -11,7 +10,6 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
       <Hero />
       {dataElement}
     </div>

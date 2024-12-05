@@ -1,12 +1,93 @@
-body {  
-  background-color: black;
-  color: whitesmoke;
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.logo {
-  height: 60px;
-  width: 60px;
+
+/* Body Styling */
+body {
+  background-color: black;
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Navbar Styling */
+.navbar {
+  background-color: azure;
+  color: black;
   display: flex;
-  box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 50px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  margin-bottom: 50px;
+}
+
+/* Logo Styling */
+.logo img {
+  height: 50px;
+  width: 50px;
+  object-fit: contain;
+}
+
+/* Navigation Links */
+.navbar ul {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar ul li {
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.navbar ul li:hover {
+  color: goldenrod;
+}
+
+/* Buttons */
+.navbar button {
+  background-color: goldenrod;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar button:hover {
+  background-color: darkgoldenrod;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .navbar button {
+    margin-left: 0;
+    margin-top: 5px;
+  }
 }
 .image1 {
   height: 400px;
@@ -16,10 +97,11 @@ body {
   margin: 0;
   align-items: center;
   justify-content: center;
-  ;
 }
 .container {
+  margin-top: 50px;
   margin-left: 70px;
+  display: flex;
  
 
 }
@@ -30,8 +112,6 @@ body {
   margin-left: 60px;
   display: flex;
   flex-direction: column;
- 
-
 }
 .container1 {
   float:left;
@@ -40,7 +120,7 @@ body {
   margin-left: 50px;
   align-items: center;
   border: 2px solid goldenrod;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   border-radius: 10px ;
   box-shadow: 0px 2.98256px 7.4564px rgba(243, 240, 2440, 2.9);
   position: relative;
@@ -59,6 +139,3 @@ body {
   font-weight: bold;
 
 }
-
-
-
