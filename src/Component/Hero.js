@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SignIn from './Form/SignIn'; // Adjust path based on your folder structure
+import SignIn from './Form/SignIn';
 
 export default function Hero() {
   const [showSignIn, setShowSignIn] = useState(false);
@@ -25,7 +25,7 @@ export default function Hero() {
         </ul>
       </nav>
       {/* Render SignIn form conditionally */}
-      {showSignIn && <SignIn />}
+      {showSignIn && <SignIn setShowSignIn={setShowSignIn} />}
     </section>
   );
 }

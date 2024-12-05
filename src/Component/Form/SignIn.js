@@ -1,12 +1,17 @@
 import React from "react";
 import './SignIn.css';
-import TatusImage from './Tatus.jpeg'; // Import the image
 
-export default function SignIn() {
+export default function SignIn({ setShowSignIn }) {
+  const handleFormSubmit = (e) => {
+    e.preventDefault(); // Prevent the default form submission
+    console.log("Form submitted"); // Log details or handle form submission logic
+    setShowSignIn(false); // Hide the form
+  };
+
   return (
     <div className="signin-modal">
-      <div className="signin-wrapper" style={{ backgroundImage: `url(${TatusImage})` }}>
-        <form>
+      <div className="signin-wrapper">
+        <form onSubmit={handleFormSubmit}>
           <h1>Login</h1>
           <div className="input-box">
             <input type="text" placeholder="Username" required />
