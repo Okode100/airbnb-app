@@ -6,7 +6,7 @@ import data from './Component/Data';
 
 function App() {
   const dataElement = data.map((item, index) => {
-    return <Cards items=d {item} />; // Pass items directly
+    return <Cards items= {item} />; // Pass items directly
   });
 
   return (
