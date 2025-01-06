@@ -25,14 +25,14 @@ export default function SignIn({ setShowSignIn }) {
             <label>
               <input type="checkbox" /> Remember me
             </label>
-            <a href="#">Forgot password?</a>
+            <a href="password.js">Forgot password?</a>
           </div>
           <button type="submit" className="btn">
             Login
           </button>
           <div className="register-link">
             <p>
-              Don't have an account? <a href="#">Register</a>
+              Don't have an account? <a href="SignUp.js">Register</a>
             </p>
           </div>
         </form>
