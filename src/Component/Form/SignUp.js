@@ -9,20 +9,20 @@ export default function SignUp({ setShowSignUp }) {
   };
 
   return (
-    <div>
-        <div>
+    <div className="signin-modal">
+        <div className="signin-wrapper">
       <form onSubmit={handleFormSubmit}>
         <h1>SignUp</h1>
         <div className="input-box">
           <label>Username:</label>
           <input type="email" placeholder="user_mail" required />
         </div>
-        <div>
+        <div className="input-box">
           <label htmlFor="password">Password:</label>
           <input type="password" placeholder="password" minLength="8" required />
         </div>
         <button type="submit" className="btn">SignUp</button>
-        <div>
+        <div className="input-box">
           <label>
             Already have an account? <a href="/signin">LOGIN</a>
           </label>
