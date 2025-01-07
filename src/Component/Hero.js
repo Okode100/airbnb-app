@@ -27,7 +27,7 @@ export default function Hero() {
           <button className="button" onClick={handleSignInClick}>
             {showSignIn ? 'Close' : 'Sign In'}
           </button>
-          <button className="button" onClick={handleSignUpClick}>{ShowSignUp ? 'Close': 'Sign In'}</button>
+          <button className="button" onClick={handleSignUpClick}>{ShowSignUp ? 'Close': 'Sign Up'}</button>
         </ul>
       </nav>
       {/* Render SignIn form conditionally */}
