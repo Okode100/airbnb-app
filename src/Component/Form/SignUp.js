@@ -24,7 +24,7 @@ export default function SignUp({ setShowSignUp }) {
         <button type="submit" className="btn">SignUp</button>
         <div className="input-box">
           <label>
-            Already have an account? <a href="/signin">LOGIN</a>
+            Already have an account? <a href="/signin">Sign In</a>
           </label>
         </div>
       </form>
