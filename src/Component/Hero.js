@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import SignIn from './Form/SignIn';
+import SignUp from './Form/SignUp';
 
 export default function Hero() {
   const [showSignIn, setShowSignIn] = useState(false);
+  const [ShowSignUp, setShowSignUp] = useState(false);
+
+  const handleSignUpClick = () => {
+    setShowSignUp((prev) => !prev);
+  };
 
   const handleSignInClick = () => {
     setShowSignIn((prev) => !prev);
@@ -21,11 +27,12 @@ export default function Hero() {
           <button className="button" onClick={handleSignInClick}>
             {showSignIn ? 'Close' : 'Sign In'}
           </button>
-          <button className="button">Sign Up</button>
+          <button className="button" onClick={handleSignUpClick}>{ShowSignUp ? 'Close': 'Sign In'}</button>
         </ul>
       </nav>
       {/* Render SignIn form conditionally */}
-      {showSignIn && <SignIn setShowSignIn={setShowSignIn} />}
+       {showSignIn && <SignIn setShowSignIn={setShowSignIn} />}
+       {ShowSignUp && <SignUp setShowSignUp={setShowSignUp} />}
     </section>
   );
 }

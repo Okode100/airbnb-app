@@ -14,7 +14,7 @@ export default function SignIn({ setShowSignIn }) {
         <form onSubmit={handleFormSubmit}>
           <h1>Login</h1>
           <div className="input-box">
-            <input type="text" placeholder="Username" required />
+            <input type="email" placeholder="User_mail" required />
             <i className="bx bxs-user"></i>
           </div>
           <div className="input-box">
@@ -32,7 +32,7 @@ export default function SignIn({ setShowSignIn }) {
           </button>
           <div className="register-link">
             <p>
-              Don't have an account? <a href="SignUp.js">Register</a>
+              Don't have an account? <a href="SignUp.js">SignUp</a>
             </p>
           </div>
         </form>
