@@ -8,7 +8,7 @@ export default function Hero() {
 
   const handleSignUpClick = () => {
     setShowSignUp(true);
-    setShowSignIn(false); // Close SignIn if it's open
+    setShowSignIn(true); // Close SignIn if it's open
   };
 
   const handleSignInClick = () => {
