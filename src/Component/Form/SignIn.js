@@ -5,7 +5,7 @@ export default function SignIn({ setShowSignIn }) {
   const handleFormSubmit = (e) => {
     e.preventDefault(); // Prevent the default form submission
     console.log("Form submitted"); // Log details or handle form submission logic
-    setShowSignIn(false); // Hide the form
+    setShowSignIn(false); // Close the SignIn form
   };
 
   return (
@@ -32,7 +32,7 @@ export default function SignIn({ setShowSignIn }) {
           </button>
           <div className="register-link">
             <p>
-              Don't have an account? <a href="SignUp.js">SignUp</a>
+              Don't have an account? <button type="button" onClick={() => setShowSignIn(false)}>Sign Up</button>
             </p>
           </div>
         </form>
