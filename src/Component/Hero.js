@@ -7,11 +7,13 @@ export default function Hero() {
   const [ShowSignUp, setShowSignUp] = useState(false);
 
   const handleSignUpClick = () => {
-    setShowSignUp((prev) => !prev);
+    setShowSignUp(true);
+    setShowSignIn(false); // Close SignIn if it's open
   };
 
   const handleSignInClick = () => {
-    setShowSignIn((prev) => !prev);
+    setShowSignIn(true);
+    setShowSignUp(false); // Close SignUp if it's open
   };
 
   return (
