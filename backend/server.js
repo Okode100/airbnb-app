@@ -1,10 +1,14 @@
+const express = require('express');
+const mysql = require('mysql2');
+const app = express();
+const port = 3000;
 const mysql = require('mysql');
 
 // Create a MySQL connection
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'yourpassword',
+  password: '5692',
   database: 'airbnb_db'
 });
 
