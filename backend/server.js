@@ -52,7 +52,8 @@ app.post('/users', (req, res) => {
     res.status(201).json({ id: results.insertId, name, email });
   });
 });
-// Route to get all users
+  GNU nano 7.2                                  server.js                                           // Route to get all users                                                                           app.get('/users', (req, res) => {                                                                     connection.query('SELECT * FROM users', (err, results) => {                                           if (err) {                                                                                            return res.status(500).send('Error fetching users');                                              }                                                                                                   res.json(results);                                                                                });                                                                                               });                                                                                                 // Route to update a user's details                                                                                                                                                                     ^G Help       ^O Write Out  ^W Where Is   ^K Cut        ^T Execute    ^C Location   M-U Undo
+^X Exit       ^R Read File  ^\ Replace    ^U Paste      ^J Justify    ^/ Go To Line M-E Redo // Route to get all users
 app.get('/users', (req, res) => {
   connection.query('SELECT * FROM users', (err, results) => {
     if (err) {
@@ -86,3 +87,49 @@ app.delete('/users/:id', (req, res) => {
     res.json({ message: 'User deleted successfully' });
   });
 });
+<<<<<<< HEAD
+=======
+
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+
+// Route to login a user
+app.post('/login', (req, res) => {
+  const { email, password } = req.body;
+
+  // Check if user exists
+  connection.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
+    if (err) return res.status(500).send('Error logging in');
+    if (results.length === 0) return res.status(400).send('User not found');
+
+    const user = results[0];
+
+    // Compare password with hashed password in the database
+    bcrypt.compare(password, user.password, (err, isMatch) => {
+      if (err) return res.status(500).send('Error comparing passwords');
+      if (!isMatch) return res.status(400).send('Incorrect password');
+
+      // Generate a JWT token
+      const token = jwt.sign({ id: user.id, email: user.email }, 'your_jwt_secret', { expiresIn: '1h' });
+      res.json({ message: 'Logged in successfully', token });
+    });
+  });
+});
+const authenticate = (req, res, next) => {
+  const token = req.header('x-auth-token');
+  if (!token) return res.status(401).send('Access denied');
+
+  jwt.verify(token, 'your_jwt_secret', (err, decoded) => {
+    if (err) return res.status(400).send('Invalid token');
+    req.user = decoded;
+    next();
+  });
+};
+
+// Protect a route, for example, to get user data
+app.get('/profile', authenticate, (req, res) => {
+  res.json({ message: 'Welcome to your profile!', user: req.user });
+});
+
+    
+>>>>>>> backend
