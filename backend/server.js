@@ -1,8 +1,7 @@
 const express = require('express');
-const mysql = require('mysql2');
+const mysql = require('mysql');
 const app = express();
 const port = 3000;
-const mysql = require('mysql');
 
 // Create a MySQL connection
 const connection = mysql.createConnection({
@@ -21,5 +20,24 @@ connection.connect((err) => {
   console.log('Connected to MySQL!');
 });
 
-// Close the connection
-connection.end();
+// Define a route to fetch users
+app.get('/users', (req, res) => {
+  connection.query('SELECT * FROM users', (err, results) => {
+    if (err) {
+      console.error('Error fetching users:', err);
+      res.status(500).send('Server error');
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
+// Define the root route
+app.get('/', (req, res) => {
+    res.send('Welcome to the Airbnb app API!');
+  });
+  
