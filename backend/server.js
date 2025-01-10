@@ -40,4 +40,51 @@ app.listen(port, () => {
 app.get('/', (req, res) => {
     res.send('Welcome to the Airbnb app API!');
   });
+  // Route to create a new user
+app.post('/users', (req, res) => {
+  const { name, email } = req.body;
+
+  const query = 'INSERT INTO users (name, email) VALUES (?, ?)';
+  connection.query(query, [name, email], (err, results) => {
+    if (err) {
+      return res.status(500).send('Error creating user');
+    }
+    res.status(201).json({ id: results.insertId, name, email });
+  });
+});
+// Route to get all users
+app.get('/users', (req, res) => {
+  connection.query('SELECT * FROM users', (err, results) => {
+    if (err) {
+      return res.status(500).send('Error fetching users');
+    }
+    res.json(results);
+  });
+});
+// Route to update a user's details
+app.put('/users/:id', (req, res) => {
+  const userId = req.params.id;
+  const { name, email } = req.body;
+
+  const query = 'UPDATE users SET name = ?, email = ? WHERE id = ?';
+  connection.query(query, [name, email, userId], (err, results) => {
+    if (err) {
+      return res.status(500).send('Error updating user');
+    }
+    res.json({ message: 'User updated successfully' });
+  });
+});
+// Route to delete a user
+app.delete('/users/:id', (req, res) => {
+  const userId = req.params.id;
+
+  const query = 'DELETE FROM users WHERE id = ?';
+  connection.query(query, [userId], (err, results) => {
+    if (err) {
+      return res.status(500).send('Error deleting user');
+    }
+    res.json({ message: 'User deleted successfully' });
+  });
+});
+
   
