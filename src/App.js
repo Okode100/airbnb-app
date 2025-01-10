@@ -1,7 +1,9 @@
+import React from 'react';
 import './App.css';
 import Cards from './Component/Cards';
 import Hero from './Component/Hero';
 import data from './Component/Data';
+
 
 function App() {
   const dataElement = data.map((item, index) => {
