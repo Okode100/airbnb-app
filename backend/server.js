@@ -1,17 +1,22 @@
 const express = require('express');
 const mysql = require('mysql');
+const dotenv = require('dotenv'); // Import dotenv for environment variables
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000; // Use environment variable for port
+
+dotenv.config(); // Load environment variables
 
 // Create a MySQL connection
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '5692',
-  database: 'airbnb_db'
+  host: process.env.DB_HOST, // Use environment variable for host
+  user: process.env.DB_USER, // Use environment variable for user
+  password: process.env.DB_PASSWORD, // Use environment variable for password
+  database: process.env.DB_NAME // Use environment variable for database
 });
 
-// Connect to the database
 connection.connect((err) => {
   if (err) {
     console.error('Error connecting to MySQL:', err);
@@ -20,7 +25,15 @@ connection.connect((err) => {
   console.log('Connected to MySQL!');
 });
 
-// Define a route to fetch users
+// Middleware for parsing JSON requests
+app.use(express.json());
+
+// Define the root route
+app.get('/', (req, res) => {
+  res.send('Welcome to the Airbnb app API!');
+});
+
+// Route to fetch users
 app.get('/users', (req, res) => {
   connection.query('SELECT * FROM users', (err, results) => {
     if (err) {
@@ -32,15 +45,7 @@ app.get('/users', (req, res) => {
   });
 });
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
-// Define the root route
-app.get('/', (req, res) => {
-    res.send('Welcome to the Airbnb app API!');
-  });
-  // Route to create a new user
+// Route to create a new user
 app.post('/users', (req, res) => {
   const { name, email } = req.body;
 
@@ -52,16 +57,7 @@ app.post('/users', (req, res) => {
     res.status(201).json({ id: results.insertId, name, email });
   });
 });
-  GNU nano 7.2                                  server.js                                           // Route to get all users                                                                           app.get('/users', (req, res) => {                                                                     connection.query('SELECT * FROM users', (err, results) => {                                           if (err) {                                                                                            return res.status(500).send('Error fetching users');                                              }                                                                                                   res.json(results);                                                                                });                                                                                               });                                                                                                 // Route to update a user's details                                                                                                                                                                     ^G Help       ^O Write Out  ^W Where Is   ^K Cut        ^T Execute    ^C Location   M-U Undo
-^X Exit       ^R Read File  ^\ Replace    ^U Paste      ^J Justify    ^/ Go To Line M-E Redo // Route to get all users
-app.get('/users', (req, res) => {
-  connection.query('SELECT * FROM users', (err, results) => {
-    if (err) {
-      return res.status(500).send('Error fetching users');
-    }
-    res.json(results);
-  });
-});
+
 // Route to update a user's details
 app.put('/users/:id', (req, res) => {
   const userId = req.params.id;
@@ -75,6 +71,7 @@ app.put('/users/:id', (req, res) => {
     res.json({ message: 'User updated successfully' });
   });
 });
+
 // Route to delete a user
 app.delete('/users/:id', (req, res) => {
   const userId = req.params.id;
@@ -87,11 +84,6 @@ app.delete('/users/:id', (req, res) => {
     res.json({ message: 'User deleted successfully' });
   });
 });
-<<<<<<< HEAD
-=======
-
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
 
 // Route to login a user
 app.post('/login', (req, res) => {
@@ -110,16 +102,18 @@ app.post('/login', (req, res) => {
       if (!isMatch) return res.status(400).send('Incorrect password');
 
       // Generate a JWT token
-      const token = jwt.sign({ id: user.id, email: user.email }, 'your_jwt_secret', { expiresIn: '1h' });
+      const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
       res.json({ message: 'Logged in successfully', token });
     });
   });
 });
+
+// Middleware for authentication
 const authenticate = (req, res, next) => {
   const token = req.header('x-auth-token');
   if (!token) return res.status(401).send('Access denied');
 
-  jwt.verify(token, 'your_jwt_secret', (err, decoded) => {
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) return res.status(400).send('Invalid token');
     req.user = decoded;
     next();
@@ -131,5 +125,7 @@ app.get('/profile', authenticate, (req, res) => {
   res.json({ message: 'Welcome to your profile!', user: req.user });
 });
 
-    
->>>>>>> backend
+// Start the server
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
