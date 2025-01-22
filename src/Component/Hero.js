@@ -24,7 +24,7 @@ export default function Hero() {
         </div>
         <ul>
           <li>About</li>
-          <li>Technology</li>
+          <li>Profile</li> {/* Changed from Technology to Profile */}
           <li>Contact Us</li>
           <button className="button" onClick={handleSignInClick}>
             {showSignIn ? 'Close' : 'Sign In'}
