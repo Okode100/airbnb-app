@@ -2,9 +2,9 @@ import React from 'react'
 
 export default function Cards(props){
     let badgeText
-    if (props.items.avail <= 6){
+    if (props.items.avail <= 100){
         badgeText = 'BOOKED'
-    }else if(props.items.avail >= 10){
+    }else if(props.items.avail >= 100){
         badgeText = 'SOLD OUT'
     }else{
         badgeText = 'AVAILABLE'
