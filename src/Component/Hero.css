@@ -1,0 +1,24 @@
+.hero-container {
+  text-align: center;
+  padding: 50px;
+  background-color: #000; /* Black background color */
+}
+
+.hero-container h1 {
+  font-size: 2.5rem;
+  color: #fff; /* White text color */
+}
+
+.hero-container button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff; /* White text color */
+  background-color: gold; /* Gold background color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.hero-container button:hover {
+  background-color: #ffd700; /* Lighter gold on hover */
+}

@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const Users = () => {
   const [users, setUsers] = useState([]);
+  const [userProfile, setUserProfile] = useState(null); // State to hold user profile
 
   useEffect(() => {
     axios.get('http://localhost:3000/users')
@@ -18,8 +19,15 @@ const Users = () => {
     <div>
       <h1>Users</h1>
       <ul>
-        {users.map(user => (
-          <li key={user.id}>{user.name} - {user.email}</li>
+        {userProfile && ( // Check if userProfile exists
+          <li>
+            <strong>Profile:</strong> {userProfile.name} - {userProfile.email}
+          </li>
+        )}
+        {users.map(user => ( 
+          <li key={user.id} onClick={() => setUserProfile(user)}> {/* Set user profile on click */}
+            {user.name} - {user.email}
+          </li> // Closing tag for li
         ))}
       </ul>
     </div>
