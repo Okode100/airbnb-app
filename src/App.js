@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Cards from './Component/Cards';
 import Hero from './Component/Hero';
-import Navbar from './Component/Navbar'; // Import Navbar
+//import Navbar from './Component/Navbar'; // Import Navbar
 import data from './Component/Data';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar /> {/* Render Navbar */}
+    
       <Hero />
       {dataElement}
     </div>
